@@ -23,7 +23,7 @@ public class StartupRegistration {
             new RestTemplate().postForObject(lbUrl, backendServiceUrl, String.class);
             System.out.println("Registered with Load Balancer " + backendServiceUrl);
         }catch (Exception e){
-            System.out.println("Failed to register with Load Balancer " + backendServiceUrl);
+            System.out.println("Failed to register with Load Balancer " + backendServiceUrl + "exception: "+ e.getMessage());
         }
     }
 }
