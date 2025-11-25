@@ -1,4 +1,4 @@
-package com.atc.codecafe.loadbalancer_service;
+package com.atc.codecafe.loadbalancerservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

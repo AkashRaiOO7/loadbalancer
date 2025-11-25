@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/backendserver2/pom.xml" />
         <option value="$PROJECT_DIR$/backendserver3/backendserver3/pom.xml" />
         <option value="$PROJECT_DIR$/loadbalancer-service/pom.xml" />
+        <option value="$PROJECT_DIR$/service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

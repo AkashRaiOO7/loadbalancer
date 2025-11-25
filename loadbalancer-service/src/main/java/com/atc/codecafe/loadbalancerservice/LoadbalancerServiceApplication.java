@@ -1,13 +1,16 @@
-package com.atc.codecafe.loadbalancer_service;
+package com.atc.codecafe.loadbalancerservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableScheduling
 public class LoadbalancerServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LoadbalancerServiceApplication.class, args);
 	}
+
 
 }
