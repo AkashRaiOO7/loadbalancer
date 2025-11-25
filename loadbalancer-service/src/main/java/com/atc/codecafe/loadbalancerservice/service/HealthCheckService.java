@@ -20,8 +20,12 @@ public class HealthCheckService {
     public void checkServers() {
         for(String server: serverRegistry.getServers()){ //loop to check for health servers
             try{
-                restTemplate.getForObject(server + "/ping", String.class);
-                System.out.println("health server: "+ server);
+                String response = restTemplate.getForObject(server + "/ping", String.class);
+                if ("OK".equals(response)) {
+                    System.out.println("healthy server: "+ server);
+                } else {
+                    throw new RuntimeException("Unexpected ping response");
+                }
             }catch (Exception e){
                 System.out.println("Removing unhealthy server: "+ server);
                 serverRegistry.removeServer(server);
@@ -31,11 +35,13 @@ public class HealthCheckService {
         //loop to re-check unhealthy servers
         for(String server: new HashSet<>(unhealthy)){
             try{
-                restTemplate.getForObject(server + "/ping", String.class);
-                serverRegistry.registerServers(server);
-                unhealthy.remove(server);
+                String response = restTemplate.getForObject(server + "/ping", String.class);
+                if ("OK".equals(response)) {
+                    System.out.println("Recovered server: " + server);
+                    serverRegistry.registerServers(server);
+                    unhealthy.remove(server);
+                }
             }catch (Exception e){
-                System.out.println("Issue while de-registry of the server: " + server);
             }
         }
     }
